@@ -15,6 +15,6 @@ This is a script that makes a bunch of WAV files ready for being played in Jam P
     - lame
 2. Execute `npm install --global`
 
-# Usage
+## Usage
 
     make-ready-for-jampad *.wav
