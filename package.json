@@ -1,0 +1,17 @@
+{
+  "name": "make-ready-for-jampad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "make-ready-for-jampad.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "make-ready-for-jampad": "./make-ready-for-jampad.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "shelljs": "^0.8.1"
+  }
+}
