@@ -5,9 +5,9 @@ const NodeID3 = require('node-id3')
 const path = require('path')
 
 const filePattern = process.argv[2] || '*'
-const paths = ls(filePattern).map(f => path.parse(f.toLowerCase()))
-const relevantPaths = paths.filter(p => ['.wav', '.mp3'].includes(p.ext))
-const relevantFileNamesWithoutExtension = relevantPaths.map(p => p.name)
+const paths = ls('-d', filePattern).map(f => path.parse(f))
+const relevantPaths = paths.filter(p => ['.wav', '.mp3'].includes(p.ext.toLowerCase()))
+const relevantFileNamesWithoutExtension = relevantPaths.map(p => p.name.toLowerCase())
 if (hasDuplicates(relevantFileNamesWithoutExtension)) {
     echo('After processing there would be duplicate files names. Please make all file names unique (ignoring the extension) and try again!')
     echo('\nDuplicates: "' + findDuplicates(relevantFileNamesWithoutExtension).join('", "') + '"')
@@ -16,7 +16,7 @@ if (hasDuplicates(relevantFileNamesWithoutExtension)) {
 relevantPaths.forEach(p => {
     const formattedPath = path.format(p)
     echo(`\n\n# Processing ${formattedPath}...\n`)
-    if (p.ext === '.wav') {
+    if (p.ext.toLowerCase() === '.wav') {
         // Encode and set title
         exec(`lame --preset insane --tt "${p.name}" "${formattedPath}"`)
     } else {
