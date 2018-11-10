@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-id3": "^0.1.7",
     "shelljs": "^0.8.1"
   }
 }
